@@ -1,0 +1,30 @@
+﻿@page "/"
+@inject HttpClient Http
+
+<h3>ЧетНечетРавно</h3>
+
+<button @onclick="GetOddEven">Нажми меня</button>
+
+<p>@message</p>
+
+@code {
+    private string message = string.Empty;
+
+    private async Task GetOddEven()
+    {
+        try
+        {
+            var res = await Http.GetFromJsonAsync<ResponseModel>("api/oddEven");
+            message = res.Message;
+        }
+        catch (Exception ex)
+        {
+            message = $"Error: {ex.Message}";
+        }
+    }
+
+    public class ResponseModel
+    {
+        public string Message { get; set; }
+    }
+}

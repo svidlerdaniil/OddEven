@@ -4,8 +4,10 @@ namespace OddEvenServer
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OddEvenController : ControllerBase
+    public class OddEvenController(IDateTimeProvider dateTimeProvider) : ControllerBase
     {
+        private readonly IDateTimeProvider _dateTimeProvider = dateTimeProvider;
+
         [HttpGet]
         public IActionResult GetOddEven()
         {
@@ -14,7 +16,7 @@ namespace OddEvenServer
         }
         private string GetDateTimeOddEven()
         {
-            var now = DateTime.Now;
+            var now = _dateTimeProvider.GetCurrentDateTime();
             int[] dateTimeParts = [now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second];
             int evenCount = 0;
             int oddCount = 0;
