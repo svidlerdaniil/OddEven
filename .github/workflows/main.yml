@@ -52,12 +52,12 @@ jobs:
     - name: Restore
       run: |
         cd OddEvenTests
-        dotnet restore
+        dotnet restore OddEvenTests.csproj
 
     - name: Run
       run: |
         cd OddEvenTests
-        dotnet test --configuration Release
+        dotnet test OddEvenTests.csproj --configuration Release
 
   deploy:
     runs-on: ubuntu-latest
