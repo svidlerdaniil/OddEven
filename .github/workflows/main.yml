@@ -69,8 +69,8 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-        docker build -t odd-even-server ./OddEvenServer
-        docker build -t odd-even-client ./OddEvenClient
+        docker build -t ${{ vars.DOCKER_USERNAME }}/odd-even-server:latest ./OddEvenServer
+        docker build -t ${{ vars.DOCKER_USERNAME }}/odd-even-client:latest ./OddEvenClient
         echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ vars.DOCKER_USERNAME }}" --password-stdin
         docker push ${{ vars.DOCKER_USERNAME }}/odd-even-server:latest
         docker push ${{ vars.DOCKER_USERNAME }}/odd-even-client:latest
