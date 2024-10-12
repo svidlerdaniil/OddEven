@@ -23,9 +23,9 @@ namespace OddEvenServer.Tests
         }
 
         [Theory]
-        [InlineData(2024, 10, 10, 12, 12, 12, "чет!")]
-        [InlineData(2024, 10, 11, 13, 13, 13, "нечет!")]
-        [InlineData(2023, 10, 10, 11, 12, 13, "равно!")]
+        [InlineData(2024, 10, 10, 12, 12, 12, "С‡РµС‚!")]
+        [InlineData(2024, 10, 11, 13, 13, 13, "РЅРµС‡РµС‚!")]
+        [InlineData(2023, 10, 10, 11, 12, 13, "СЂР°РІРЅРѕ!")]
         public async Task GetOddEven_ReturnsCorrectResult(int year, int month, int day, int hour, int minute, int second, string expectedMessage)
         {
             var mockDateTimeProvider = new Mock<IDateTimeProvider>();
@@ -36,7 +36,6 @@ namespace OddEvenServer.Tests
             {
                 builder.ConfigureServices(services =>
                 {
-                    //Подменяем реальный DateTimeProvider на mock
                     services.AddSingleton<IDateTimeProvider>(mockDateTimeProvider.Object);
                 });
             }).CreateClient();
