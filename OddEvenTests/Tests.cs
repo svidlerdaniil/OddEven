@@ -36,7 +36,7 @@ namespace OddEvenServer.Tests
             {
                 builder.ConfigureServices(services =>
                 {
-                    // Подменяем реальный DateTimeProvider на mock
+                    //Подменяем реальный DateTimeProvider на mock
                     services.AddSingleton<IDateTimeProvider>(mockDateTimeProvider.Object);
                 });
             }).CreateClient();

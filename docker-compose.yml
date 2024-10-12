@@ -1,0 +1,15 @@
+services:
+  blazorclientserverserver:
+    image: odd-even-server
+    build:
+      context: ./OddEvenServer
+      dockerfile: Dockerfile
+    ports:
+      - 4080:80
+  blazorclientserverclient:
+    image: odd-even-client
+    build:
+      context: ./OddEvenClient
+      dockerfile: Dockerfile
+    ports:
+      - 5080:80
