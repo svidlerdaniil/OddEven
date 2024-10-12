@@ -17,7 +17,7 @@ namespace OddEvenServer
         private string GetDateTimeOddEven()
         {
             var now = _dateTimeProvider.GetCurrentDateTime();
-            int[] dateTimeParts = [now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second];
+            int[] dateTimeParts = {now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second};
             int evenCount = 0;
             int oddCount = 0;
             foreach (var part in dateTimeParts)
